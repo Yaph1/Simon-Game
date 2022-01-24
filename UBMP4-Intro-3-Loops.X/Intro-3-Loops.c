@@ -442,7 +442,7 @@ void win(void)                  // Game win function (mario complete level sound
 	nap();                      // Shutdown
 }
  
-void lose(void)                 // Pattern fail. Game lose function (mario death sound)
+void lose(void)                 // Pattern fail. Game lose function (mario death sound, shows score, turns off)
 {
     noteB4(500);
     noteF5(250);
@@ -454,7 +454,33 @@ void lose(void)                 // Pattern fail. Game lose function (mario death
     noteE5(300);
     noteD5(300);
     noteC5(500);
-                                // Sounds, lights?                     
+      
+      while(maxStep >= 10)
+      {
+          LED(1);
+          __delay_ms(500);
+          LED(0);
+          __delay_ms(500);
+          maxStep = maxStep - 10;
+      }     
+      
+         while(maxStep >= 5)
+      {
+          LED(2);
+          __delay_ms(500);
+          LED(0);
+          __delay_ms(500);
+          maxStep = maxStep - 5;
+      }  
+      
+         while(maxStep > 0)
+      {
+          LED(3);
+          __delay_ms(500);
+          LED(0);
+          __delay_ms(500);
+          maxStep = maxStep - 1;
+      }                         // Sounds, lights?                     
                                 // Show score?
 	nap();                      // Power down
 }
