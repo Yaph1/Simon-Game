@@ -213,6 +213,25 @@ void noteG5(unsigned int per)   // Plays note G5 for requested number of cycles
     }
 }
 
+void noteB4(unsigned int per)   // Plays note B5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1012);
+    }
+}
+
+void noteF5(unsigned int per)   // Plays note F5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(715);
+    }
+}
+
+
 
  
 /*==============================================================================
@@ -231,19 +250,15 @@ void sound(unsigned char num)   // Play selected note sound
 		noteA5(451);	
 }
  
-void startSound(void)           // Game start-up sound
+void startSound(void)           // Game start-up sound (mario 1up sound)
 {
-   noteE4(200);
-   __delay_us(100);
-   noteG4(200);
-   __delay_us(100);
-   noteE5(200);
-   __delay_us(100);
-   noteC5(200);
-   __delay_us(100);
-   noteD5(200);
-   __delay_us(100);
-   noteG5(200);
+
+   noteE4(125);
+   noteG4(150);
+   noteE5(150);
+   noteC5(150);
+   noteD5(150);
+   noteG5(150);
 }
  
 void win(void)                  // Game win function
@@ -254,7 +269,17 @@ void win(void)                  // Game win function
  
 void lose(void)                 // Pattern fail. Game lose function
 {
-                                // Sounds, lights?
+    noteB4(500);
+    noteF5(250);
+    __delay_ms(25);
+    noteF5(250);
+    __delay_ms(25);
+    noteF5(250);
+    __delay_ms(25);
+    noteE5(300);
+    noteD5(300);
+    noteC5(500);
+                                // Sounds, lights?                     
                                 // Show score?
 	nap();                      // Power down
 }
