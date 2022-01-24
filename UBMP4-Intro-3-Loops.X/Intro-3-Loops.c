@@ -19,7 +19,7 @@
 // Program constants
 #define pressed 0               // Switch pressed logic state
 #define timeOut 2400            // Idle shutdown time-out duration * 50ms (1200/min)
-#define patternLength 42        // Total number of pattern steps to match
+#define patternLength 10        // Total number of pattern steps to match
  
 // Set up program variables
 __persistent unsigned char randomSeed;  // Random seed updated from TMR0
@@ -231,8 +231,140 @@ void noteF5(unsigned int per)   // Plays note F5 for requested number of cycles
     }
 }
 
+void noteG3(unsigned int per)   // Plays note G3 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(2551);
+    }
+}
 
+void noteC4(unsigned int per)   // Plays note C4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1911);
+    }
+}
 
+void noteG6(unsigned int per)   // Plays note G6 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(637);
+    }
+}
+
+void noteGS3(unsigned int per)   // Plays note GS3 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(2407);
+    }
+}
+
+void noteEF4(unsigned int per)   // Plays note EF4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1607);
+    }
+}
+
+void noteGS4(unsigned int per)   // Plays note GS4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1203);
+    }
+}
+
+void noteEF5(unsigned int per)   // Plays note EF5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(803);
+    }
+}
+
+void noteGS5(unsigned int per)   // Plays note GS5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(601);
+    }
+}
+
+void noteDS5(unsigned int per)   // Plays note DS5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(803);
+    }
+}
+
+void noteAS3(unsigned int per)   // Plays note AS3 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(2145);
+    }
+}
+
+void noteD4(unsigned int per)   // Plays note D4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1702);
+    }
+}
+
+void noteF4(unsigned int per)   // Plays note F4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1431);
+    }
+}
+
+void noteBF4(unsigned int per)   // Plays note BF4 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(1072);
+    }
+}
+
+void noteBF5(unsigned int per)   // Plays note BF5 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(536);
+    }
+}
+
+void noteC6(unsigned int per)   // Plays note C6 for requested number of cycles
+{
+    for(per; per != 0; per--)
+    {
+        BEEPER = !BEEPER;
+        __delay_us(477);
+    }
+}
  
 /*==============================================================================
  Sound functions. 
@@ -259,15 +391,58 @@ void startSound(void)           // Game start-up sound (mario 1up sound)
    noteC5(150);
    noteD5(150);
    noteG5(150);
+   
+   
 }
  
-void win(void)                  // Game win function
+void win(void)                  // Game win function (mario complete level sound)
 {
+    noteG3(100);
+    noteC4(100);
+    noteE4(100);
+    noteG4(100);
+    noteC5(100);
+    noteE5(100);
+    __delay_ms(10);
+    noteG6(600);
+    __delay_ms(10);
+    noteE5(600);
+    __delay_ms(10);
+    
+    noteGS3(100);
+    noteC4(100);
+    noteEF4(100);
+    noteGS4(100); 
+    noteC5(100);
+    noteEF5(100);
+    __delay_ms(10);
+    noteGS5(600);
+    __delay_ms(10);
+    noteDS5(600);
+    __delay_ms(10);
+    
+    noteAS3(100);
+    noteD4(100);
+    noteF4(100);
+    noteBF4(100);
+    noteD5(100);
+    noteF5(100);
+    noteBF5(600);
+    __delay_ms(10);
+    noteBF5(300);
+     __delay_ms(10);
+    noteBF5(300);
+     __delay_ms(10);
+    noteBF5(300);
+     __delay_ms(10);
+    noteC6(1000);
+    __delay_ms(25);
+
  
 	nap();                      // Shutdown
 }
  
-void lose(void)                 // Pattern fail. Game lose function
+void lose(void)                 // Pattern fail. Game lose function (mario death sound)
 {
     noteB4(500);
     noteF5(250);
