@@ -541,7 +541,7 @@ int main(void)
 			sound(pattern[step]);
 			LED(0);
 			__delay_ms(500);
-		} 
+		}`  6
 		
         // Let user repeat the pattern, comparing each step to the saved pattern
         
